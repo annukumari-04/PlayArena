@@ -1,0 +1,41 @@
+*PlayArena Gaming Platform Evaluation Rubrics*
+
+1. The /Frontend directory contains a package.json file that lists react and vite as dependencies.
+2. Running npm run dev in /Frontend starts a local server without outputting terminal errors.
+3. tailwind.config.js is present in /Frontend.
+4. The homepage renders all ten required sections: hero, daily featured, continue playing, recommended, trending, new arrivals, leaderboard, daily rewards, popular categories, and browse all.
+5. The game search input hides every game card whose title does not contain the typed string.
+6. Selecting a category filter on the Browse Games page removes every card not tagged with that category.
+7. Each game detail page contains a title, thumbnail image, category label, coin reward amount, unlock cost, short description, and a Play button.
+8. The HTML5 game player renders inside an iframe or canvas element on the game detail page without opening a new browser tab.
+9. Clicking the fullscreen button causes the game container to match the full viewport width and height.
+10. At 375 px viewport width, no element on the homepage overflows its container horizontally.
+11. At 768 px viewport width, no element on the homepage overflows its container horizontally.
+12. A guest can click Play on any game without a login or registration prompt appearing.
+13. After a browser tab is closed and reopened, the guest coin balance in localStorage matches the value stored before closing.
+14.Launching a game for the first time adds its ID to the recently-played array in localStorage within 60 seconds.
+15. A game toggled as favourite by a guest appears on the /favorites page after a full browser refresh.
+16. Claiming the daily reward a second time on the same calendar day does not increase the guest coin balance.
+17. After a guest creates an account, the coin balance in their server-side wallet matches the balance stored in localStorage before registration.
+18. Games present in localStorage['recently_played'] before registration appear in the registered dashboard's recently-played section after first login.
+19. Submitting the registration form with a valid email and password redirects the user to /dashboard without requiring admin action.
+20. The dashboard coin transaction history displays a minimum of 10 rows, each containing a date, an action label, and a numeric amount.
+21. Spending coins equal to a game's unlock_cost value adds that game to the /dashboard/library page.
+22. The weekly leaderboard ranks users by coins earned in the current calendar week, not by all-time coin totals.
+23. Each row on the leaderboard page displays a rank number, username, weekly coins earned, and games played count.
+24. All users' weekly coin totals reset to zero at Monday 00:00 UTC.
+25. The coin amount credited to a user's balance after playing a game equals the integer stored in that game's coin_reward column.
+26. Every coin credit event produces one new row in the transactions table with non-null user_id, amount, type, and created_at values.
+27. Every coin debit event produces one new row in the transactions table with non-null user_id, amount, type, and created_at values.
+28. An unlock request submitted when the user's balance is below the game's unlock_cost value returns a 4xx HTTP status and leaves the balance unchanged.
+29.The games table contains at least 50 rows, each with non-null values in title, thumbnail_url, category, coin_reward, and unlock_cost.
+30. GET /api/featured returns a JSON array containing between 25 and 30 game objects for the current calendar date.
+31. The set of game IDs returned by GET /api/featured on Day 2 differs from the set returned on Day 1.
+32. The games table contains at least one record assigned to each of the eight categories: Action, Arcade, Puzzle, Racing, Sports, Adventure, Strategy, and Casual.
+33. Submitting non-admin credentials on the admin login page returns an error response and does not grant access to /admin/dashboard.
+34. A game saved through the admin add-game form appears on the /games page on the next request without a manual database step.
+35. A game deleted via the admin dashboard returns HTTP 404 on the next GET request to that game's detail URL.
+36. The PlayArena logo displayed in the website header matches the client-provided logo asset without modification to its design elements.
+37. The client-provided PlayArena logo appears consistently on the homepage, authentication pages, user dashboard, admin dashboard, and footer.
+38. No alternative logos, placeholder logos, AI-generated logos, or developer-created branding assets are present anywhere in the platform.
+39. No page, graphic, logo, layout, or visual element appears to be a direct copy or recreation of the client-provided reference materials. 
